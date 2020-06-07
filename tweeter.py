@@ -9,6 +9,7 @@ import tweepy
 import COVanal as CV
 
 #twitter API settings, this are from the user's twitter developer account
+#Set as environment variables here, but can just set equal to the string
 consumer_key = os.environ.get('COVID_CONSUMER_KEY') 
 consumer_secret = os.environ.get('COVID_CONSUMER_SECRET')
 access_token = os.environ.get('COVID_ACCESS_TOKEN')
