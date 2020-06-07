@@ -1,8 +1,3 @@
-#implement plotly?
-#figure out how to generate daily data from total data
-#make plots
-#use same methodology to make delta data
-#make delta data
 '''
 Analysis of COVID-19 data
 
@@ -10,11 +5,6 @@ This module is only used with tweeter.py and is no longer being updated.
 All plots are generated using JHU github repository data that is imported
 into a pandas DataFrame and plotted with matplotlib to create image files
 that are tweeted daily by tweeter.py in the package.
-
-As of 06/03/2020, this file is no longer being updated and all new data
-analysis will be done in COVanal_v2.py due to movement from MPL to plotly.
-This module is being conserved as a first Data science project and to maintain
-the tweetbot.
 '''
 import datetime as dt
 from pathlib import Path
@@ -63,7 +53,7 @@ UScases = tCD.loc[225][4:]
 
 def create_daily_top_10_tables():
     '''
-    function docstring
+    Creates COVID-19 tables sorted by largest total cases or deaths
     '''
     fig, axs = plt.subplots(2, 1)
     
@@ -81,7 +71,7 @@ def create_daily_top_10_tables():
 
 def create_daily_top_10_changes_tables():
     '''
-    fxn docstring
+    Creates COVID-19 tables sorted by daily (24 hr) highs in deaths or cases
     '''
     fig, axs = plt.subplots(2, 1)
 
@@ -99,7 +89,7 @@ def create_daily_top_10_changes_tables():
 
 def create_daily_totals_graphs():
     '''
-    fxn docstring
+    Creates graphs of global total cases and deaths
     '''
     fig, axs = plt.subplots(2,1)
 
@@ -119,7 +109,7 @@ def create_daily_totals_graphs():
 
 def create_daily_US_graphs():
     '''
-    fxn docstring
+    Creates graphs of global total cases and deaths
     '''
     fig, axs = plt.subplots(2,1)
 

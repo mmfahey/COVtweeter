@@ -1,5 +1,7 @@
 '''
-Module Docstring
+Module that takes the data from COVanal and puts them into daily tweets.
+Requires a developer twitter account to obtain access to the API values 
+below.
 '''
 import os
 import datetime as dt
