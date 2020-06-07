@@ -22,8 +22,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 #time confirmed data = tCD, time death data = tDD, from JHU: https://github.com/CSSEGISandData/COVID-19
-tCD = pd.read_csv('/Users/mmfah/Google Drive/StuffonDesktop/Python Projects/Developing Projects/COVID/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv')
-tDD = pd.read_csv('/Users/mmfah/Google Drive/StuffonDesktop/Python Projects/Developing Projects/COVID/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv')
+tCD = pd.read_csv('./COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv')
+tDD = pd.read_csv('./COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv')
 
 #Create varibles for yesterday and two days ago, short hand and easier then typing the dt functions
 yesterday = dt.date.today() - dt.timedelta(days=1)
