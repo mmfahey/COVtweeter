@@ -19,33 +19,35 @@ deathsData = Path('/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_s
 tCD = pd.read_csv(casesData)
 tDD = pd.read_csv(deathsData)
 
-#
+#create time variables
 yesterday = dt.date.today() - dt.timedelta(days=1)
+otherday = dt.date.today() - dt.timedelta(days=2)
+
+#Creates the data used for tables containing top 10 countries with largest total deaths and cases
 tCD['Total Confirmed Cases'] = tCD[yesterday.strftime('%#m/%#d/%y')] 
 tDD['Total Deaths'] = tDD[yesterday.strftime('%#m/%#d/%y')] 
-top10CD = tCD.nlargest(10, yesterday.strftime('%#m/%#d/%y'))
-top10DD = tDD.nlargest(10, yesterday.strftime('%#m/%#d/%y'))
+tCD['24 hour change'] = tCD[yesterday.strftime('%#m/%#d/%y')] - tCD[otherday.strftime('%#m/%#d/%y')]
+tDD['24 hour change'] = tDD[yesterday.strftime('%#m/%#d/%y')] - tDD[otherday.strftime('%#m/%#d/%y')]
+top10CD = tCD.nlargest(10, 'Total Confirmed Cases')
+top10DD = tDD.nlargest(10, 'Total Deaths')
 top10CD['24 hour change'] = top10CD[yesterday.strftime('%#m/%#d/%y')] - top10CD[otherday.strftime('%#m/%#d/%y')]
 top10DD['24 hour change'] = top10DD[yesterday.strftime('%#m/%#d/%y')] - top10DD[otherday.strftime('%#m/%#d/%y')]
 newtop10CD = top10CD[['Country/Region', 'Total Confirmed Cases', '24 hour change']]
 newtop10DD = top10DD[['Country/Region', 'Total Deaths', '24 hour change']]
 
-#
-otherday = dt.date.today() - dt.timedelta(days=2)
-tCD['24 hour change'] = tCD[yesterday.strftime('%#m/%#d/%y')] - tCD[otherday.strftime('%#m/%#d/%y')]
-tDD['24 hour change'] = tDD[yesterday.strftime('%#m/%#d/%y')] - tDD[otherday.strftime('%#m/%#d/%y')]
+#Creates the data used for tables containing top 10 changes in countries deaths and cases
 top10changeCD = tCD.nlargest(10, '24 hour change')
 top10changeDD = tDD.nlargest(10, '24 hour change')
 newtop10changeCD = top10changeCD[['Country/Region', 'Total Confirmed Cases', '24 hour change']]
 newtop10changeDD = top10changeDD[['Country/Region', 'Total Deaths', '24 hour change']]
 
-#
+#Create dataframes for the global total graphs
 deathtotals = tDD.sum(axis=0)
 deathtotal = deathtotals[3:]
 casestotals = tCD.sum(axis=0)
 casestotal = casestotals[3:]
 
-#
+#Create dataframes for the US total graphs
 USdeaths = tDD.loc[225][4:]
 UScases = tCD.loc[225][4:]
 

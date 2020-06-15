@@ -33,6 +33,7 @@ def dailytweets():
     CV.create_daily_top_10_changes_tables()
     CV.create_daily_totals_graphs()
     CV.create_daily_US_graphs()
+    
     #Tweet 1 - file to be tweeted, actual tweet with text, delete figure
     tweettopublish1 = dt.date.today().strftime('%m%d%y') + 'total.png'
     api.update_with_media(tweettopublish1, f'COVID-19 Global Top 10 totals ({dt.date.today()}) #COVID #COV #Data #CoronaVirus')
