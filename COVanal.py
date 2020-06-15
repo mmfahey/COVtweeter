@@ -19,11 +19,8 @@ deathsData = Path('/COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_s
 tCD = pd.read_csv(casesData)
 tDD = pd.read_csv(deathsData)
 
-#Create varibles for yesterday and two days ago, short hand and easier then typing the dt functions
-yesterday = dt.date.today() - dt.timedelta(days=1)
-otherday = dt.date.today() - dt.timedelta(days=2)
-
 #
+yesterday = dt.date.today() - dt.timedelta(days=1)
 tCD['Total Confirmed Cases'] = tCD[yesterday.strftime('%#m/%#d/%y')] 
 tDD['Total Deaths'] = tDD[yesterday.strftime('%#m/%#d/%y')] 
 top10CD = tCD.nlargest(10, yesterday.strftime('%#m/%#d/%y'))
@@ -34,12 +31,13 @@ newtop10CD = top10CD[['Country/Region', 'Total Confirmed Cases', '24 hour change
 newtop10DD = top10DD[['Country/Region', 'Total Deaths', '24 hour change']]
 
 #
+otherday = dt.date.today() - dt.timedelta(days=2)
 tCD['24 hour change'] = tCD[yesterday.strftime('%#m/%#d/%y')] - tCD[otherday.strftime('%#m/%#d/%y')]
 tDD['24 hour change'] = tDD[yesterday.strftime('%#m/%#d/%y')] - tDD[otherday.strftime('%#m/%#d/%y')]
 top10changeCD = tCD.nlargest(10, '24 hour change')
 top10changeDD = tDD.nlargest(10, '24 hour change')
-newtop10changeCD = top10changeCD[['Country/Region', '24 hour change', 'Total Confirmed Cases']]
-newtop10changeDD = top10changeDD[['Country/Region', '24 hour change', 'Total Deaths']]
+newtop10changeCD = top10changeCD[['Country/Region', 'Total Confirmed Cases', '24 hour change']]
+newtop10changeDD = top10changeDD[['Country/Region', 'Total Deaths', '24 hour change']]
 
 #
 deathtotals = tDD.sum(axis=0)
