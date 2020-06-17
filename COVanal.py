@@ -32,8 +32,8 @@ top10CD = tCD.nlargest(10, 'Total Confirmed Cases')
 top10DD = tDD.nlargest(10, 'Total Deaths')
 top10CD['24 hour change'] = top10CD[yesterday.strftime('%#m/%#d/%y')] - top10CD[otherday.strftime('%#m/%#d/%y')]
 top10DD['24 hour change'] = top10DD[yesterday.strftime('%#m/%#d/%y')] - top10DD[otherday.strftime('%#m/%#d/%y')]
-newtop10CD = top10CD[['Country/Region', 'Total Confirmed Cases', '24 hour change']]
-newtop10DD = top10DD[['Country/Region', 'Total Deaths', '24 hour change']]
+newtop10CD = top10CD[['Country/Region', '24 hour change', 'Total Confirmed Cases']]
+newtop10DD = top10DD[['Country/Region', '24 hour change', 'Total Deaths']]
 
 #Creates the data used for tables containing top 10 changes in countries deaths and cases
 top10changeCD = tCD.nlargest(10, '24 hour change')
@@ -78,12 +78,12 @@ def create_daily_top_10_changes_tables():
     axs[0].set_title('Countries With Largest Change in Confirmed COVID Cases (24 hours)', pad=10)
     axs[0].axis('off')
     axs[0].axis('tight')
-    axs[0].table(cellText=newtop10CD.values, colLabels=newtop10changeCD.columns, loc='center')
+    axs[0].table(cellText=newtop10changeCD.values, colLabels=newtop10changeCD.columns, loc='center')
     
     axs[1].set_title('Countries With Most COVID Deaths (24 hours)', pad=10)
     axs[1].axis('off')
     axs[1].axis('tight')
-    axs[1].table(cellText=newtop10DD.values, colLabels=newtop10changeDD.columns, loc='center')
+    axs[1].table(cellText=newtop10changeDD.values, colLabels=newtop10changeDD.columns, loc='center')
     fig.tight_layout(pad=2)
     plt.savefig(dt.date.today().strftime('%m%d%y') + 'daily.png')
 
