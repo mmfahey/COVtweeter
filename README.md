@@ -1,32 +1,17 @@
-# Spectrochemical Energy Converter
+# COVID-19 Data Analysis and Tweetbot
 
 ## Description
-Command-line tool written in python that allows scientists to quickly and easily convert common energy units used.
+Automatted data scrapping and analysis of new cases and deaths from COVID-19. The data is obtained from John Hopkins automatically via Linux crontab on a Raspberry Pi and the tweetbot would tweet out daily plots and data tables.
 
 ## Project Status
-This project has been expanded to be used on mobile platforms as opposed to being used as a command line tool. This project will be updated with added units that are included or added to the mobile app.
+No longer updated or used. The twitter account is still active and can be viewed to get an idea of what the project did.
+https://twitter.com/COV19DataTweet
 
 ## Installation
-Must have python installed on PC/linux and the EnergyConversions.py saved in parent directory to use conversions.
+To deploy own twitter bot, must have a twitter developer account to fill in the variables needed in tweeter.py. Also must have python installed with Pandas and matplotlib
 
 ## Usage
-The project can be used as a command-line tool:
-
-```bash
-python EnergyConversions.py
-```
-
-or the conversions can be run as standalone functions:
-
-```python 
-import EnergyConversions
-
-#converts 5 eV to wavenumbers
-EnergyConversions.convert2wavenumber('eV', 5)
-
-#converts 200 nm to eV
-EnergyConversions.convert2eV('nm', 200)
-```
+Once setup, the project is automated so once the user has added their credentials to tweeter.py and setup the crontab to run the data aggregation and tweetbot the project runs itself.
 
 ## Support
 Contact the author at mmfahey92@gmail.com
