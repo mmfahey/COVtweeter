@@ -1,7 +1,7 @@
 # COVID-19 Data Analysis and Tweetbot
 
 ## Description
-Automatted data scrapping and analysis of new cases and deaths from COVID-19. The data is obtained from John Hopkins automatically via Linux crontab on a Raspberry Pi and the tweetbot would tweet out daily plots and data tables.
+Automated data scrapping and analysis of new cases and deaths from COVID-19. The data is obtained from John Hopkins automatically via Linux crontab on a Raspberry Pi and the tweetbot would tweet out daily plots and data tables.
 
 ## Project Status
 No longer updated or used. The twitter account is still active and can be viewed to get an idea of what the project did.
